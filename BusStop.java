@@ -39,9 +39,9 @@ public class BusStop {
     }
   }
 
-  public void movePassengerToBus(Person person) {
+  public void movePassengerToBus(Bus bus, Person person) {
     for (int i=0; i < peopleWaiting.length; i++) {
-      if (!busFull() && !stopEmpty()){
+      if (!bus.busFull() && !this.stopEmpty()){
         bus.add(person);
         this.remove();
       }

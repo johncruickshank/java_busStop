@@ -35,8 +35,9 @@ public class BusStopTest {
     for (int i=0; i < 5; i++) {
       busStop.add(person);
     }
-    assertEquals(4, busStop.stopPassengerCount());
-    assertEquals(1, bus.passengerCount());
+    busStop.movePassengerToBus(bus, person);
+    assertEquals(0, busStop.stopPassengerCount());
+    assertEquals(5, bus.passengerCount());
   }
 
 }
