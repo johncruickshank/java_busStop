@@ -7,7 +7,7 @@ public class BusStop {
     this.peopleWaiting = new Person[5];
   }
 
-  public int passengerCount() {
+  public int stopPassengerCount() {
     int counter = 0;
     for (Person person : this.peopleWaiting) {
       if (person != null) {
@@ -19,29 +19,33 @@ public class BusStop {
 
   public void add(Person person) {
     if (!stopFull()){
-      int passengerCount = passengerCount();
-      this.peopleWaiting[passengerCount] = person;
+      int stopPassengerCount = stopPassengerCount();
+      this.peopleWaiting[stopPassengerCount] = person;
     }
   }
 
   public boolean stopFull() {
-    return passengerCount() == this.peopleWaiting.length;
+    return stopPassengerCount() == this.peopleWaiting.length;
   }
 
   public boolean stopEmpty() {
-    return passengerCount() < 1;
+    return stopPassengerCount() < 1;
   }
 
   public void remove() {
     if (!stopEmpty()) {
-      int passengerCount = passengerCount();
-      this.peopleWaiting[passengerCount - 1] = null;
+      int stopPassengerCount = stopPassengerCount();
+      this.peopleWaiting[stopPassengerCount - 1] = null;
     }
   }
 
-  public void movePassengerToBus() {
-    if (!busFull()){
-  
+  public void movePassengerToBus(Person person) {
+    for (int i=0; i < peopleWaiting.length; i++) {
+      if (!busFull() && !stopEmpty()){
+        bus.add(person);
+        this.remove();
+      }
+    }
   }
 
 }

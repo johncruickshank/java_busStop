@@ -18,7 +18,7 @@ public class BusStopTest {
     for (int i=0; i < 5; i++) {
       busStop.add(person);
     }
-    assertEquals(5, busStop.passengerCount());
+    assertEquals(5, busStop.stopPassengerCount());
   }
 
   @Test
@@ -27,14 +27,16 @@ public class BusStopTest {
       busStop.add(person);
     }
     busStop.remove();
-    assertEquals(4, busStop.passengerCount());
+    assertEquals(4, busStop.stopPassengerCount());
   }
-  //
-  // @Test
-  // public void passengerGetOnBus() {
-  //
-  //   assertEquals(4, busStop.passengerCount());
-  //   assertEquals(1, bus.passengerCount());
-  // }
+
+  @Test
+  public void passengerGetOnBus() {
+    for (int i=0; i < 5; i++) {
+      busStop.add(person);
+    }
+    assertEquals(4, busStop.stopPassengerCount());
+    assertEquals(1, bus.passengerCount());
+  }
 
 }
